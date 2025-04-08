@@ -17,7 +17,7 @@ jobs:
 
       - name: Run script
         run: |
-          enode generate-provider.js "${PAGES_URL}"
+          node generate-provider.js "${PAGES_URL}"
 
       - name: Deploy to GitHub Pages branch
         uses: peaceiris/actions-gh-pages@v3
