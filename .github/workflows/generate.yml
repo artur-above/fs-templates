@@ -1,0 +1,27 @@
+name: Generate Provider
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      PAGES_URL: "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Run script
+        run: |
+          enode generate-provider.js "${PAGES_URL}"
+
+      - name: Deploy to GitHub Pages branch
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./static
+          publish_branch: github-pages
