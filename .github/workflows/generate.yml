@@ -1,4 +1,4 @@
-name: Generate Provider
+name: Generate and deploy
 
 on:
   workflow_dispatch:
